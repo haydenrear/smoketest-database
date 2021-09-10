@@ -11,6 +11,16 @@ public class UserProduct {
     @EmbeddedId
     UserProductPK userProductPK;
 
+    public UserProductPK getUserProductPK()
+    {
+        return userProductPK;
+    }
+
+    public void setUserProductPK(UserProductPK userProductPK)
+    {
+        this.userProductPK = userProductPK;
+    }
+
     @OneToOne
     User user;
 

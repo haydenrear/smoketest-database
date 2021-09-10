@@ -1,6 +1,7 @@
 package com.hayden;
 
 import com.hayden.entities.User;
+import com.hayden.entities.UserProduct;
 import com.hayden.entities.UserProductPK;
 import groovy.lang.Tuple;
 import groovy.lang.Tuple2;
@@ -81,9 +82,9 @@ public class SmokeTestDatabase {
         System.out.println(EntityVal.relationships);
 
         collect.forEach(entityManager::persist);
-        Optional<Object> any = collect.stream().filter(obj -> obj instanceof UserProductPK).findAny();
+        Optional<Object> any = collect.stream().filter(obj -> obj instanceof UserProduct).findAny();
         assertTrue(any.isPresent());
-        UserProductPK o = (UserProductPK) any.get();
+        UserProductPK o = ((UserProduct) any.get()).getUserProductPK();
         assertTrue(o.getProductId() != 0);
         assertTrue(o.getUserId() != 0);
 
